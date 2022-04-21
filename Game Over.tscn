@@ -1,0 +1,142 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/parallax-demon-woods-close-trees.png" type="Texture" id=1]
+[ext_resource path="res://Assets/parallax-demon-woods-far-trees.png" type="Texture" id=2]
+[ext_resource path="res://Assets/parallax-demon-woods-mid-trees.png" type="Texture" id=3]
+[ext_resource path="res://Assets/parallax-demon-woods-bg.png" type="Texture" id=4]
+[ext_resource path="res://UI/OrangeBackground.gd" type="Script" id=5]
+[ext_resource path="res://UI/MidTrees.gd" type="Script" id=6]
+[ext_resource path="res://UI/BackTrees.gd" type="Script" id=7]
+[ext_resource path="res://UI/FrontTrees.gd" type="Script" id=8]
+[ext_resource path="res://UI/Captain Blackjack.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://UI/Game Over.gd" type="Script" id=10]
+[ext_resource path="res://Assets/button.png" type="Texture" id=11]
+[ext_resource path="res://UI/Dosen Killer.otf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+outline_size = 2
+font_data = ExtResource( 12 )
+
+[node name="Game Over" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="You Win!" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -217.0
+margin_top = -218.0
+margin_right = 217.0
+margin_bottom = -118.0
+custom_fonts/font = SubResource( 1 )
+text = "You Win!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayAgain" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -219.0
+margin_top = -25.0
+margin_right = -117.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+icon = ExtResource( 11 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PlayAgain"]
+margin_left = 22.5
+margin_top = 14.0
+margin_right = 95.5
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.25098, 0.0509804, 0.0509804, 1 )
+custom_colors/font_outline_modulate = Color( 0.898039, 0.337255, 0.0901961, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Play Again?"
+
+[node name="Quit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 13.0
+margin_top = -25.0
+margin_right = 115.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+icon = ExtResource( 11 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Quit"]
+margin_left = 38.5
+margin_top = 14.0
+margin_right = 111.5
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.25098, 0.0509804, 0.0509804, 1 )
+custom_colors/font_outline_modulate = Color( 0.898039, 0.337255, 0.0901961, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="OrangeBackground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1024.1, 0 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/OrangeBackground"]
+position = Vector2( -3, 3 )
+scale = Vector2( 2.133, 2.202 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="BackTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/BackTrees"]
+scale = Vector2( 1.73, 2.202 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="MidTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1024.1, 0 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/MidTrees"]
+scale = Vector2( 1.73, 2.202 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="FrontTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1024.1, 0 )
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/FrontTrees"]
+scale = Vector2( 1.73, 2.202 )
+texture = ExtResource( 1 )
+centered = false
+
+[connection signal="pressed" from="PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
