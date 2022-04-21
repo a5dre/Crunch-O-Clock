@@ -48,7 +48,8 @@ List of group members (and contributions)
 Andre Anuszkiewicz
 Main Menu,
 End Game Menu,
-Github
+Github,
+Fixing Code Problems
 
 Lindsay Osten
 All sprites,
@@ -56,7 +57,6 @@ updated Tiles,
 Completed basic programming
 
 Caleb Perkins
-Changes with Timer,
 Level Backgrounds
 
 Endia Terrell
